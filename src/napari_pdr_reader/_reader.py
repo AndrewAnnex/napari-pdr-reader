@@ -9,6 +9,7 @@ from pathlib import Path
 
 import numpy as np
 import pdr
+import pvl
 
 valid_formats = ["img", "lbl", "fits"]
 
@@ -72,7 +73,7 @@ def reader_function(path):
     data = np.squeeze(np.stack(arrays))
 
     # optional kwargs for the corresponding viewer.add_* method
-    add_kwargs = {"name": objects[0]["LABEL"].get("PRODUCT_ID", paths[0])}
+    add_kwargs = {"name": pvl.loads(objects[0]["LABEL"]).get("PRODUCT_ID", paths[0])}
 
     layer_type = "image"  # optional, default is "image"
     return [(data, add_kwargs, layer_type)]
