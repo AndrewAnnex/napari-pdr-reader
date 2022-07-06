@@ -6,7 +6,7 @@ contributions:
       python_name: napari_pdr_reader._reader:napari_get_reader
       title: Open data with PDS reader plugin for Napari
     - id: napari-pdr-reader.make_sample_data
-      python_name: napari_pdr_reader._sample_data:make_sample_data
+      python_name: napari_pdr_reader._sample_data:get_m2020_data
       title: Load sample data from PDS reader plugin for Napari
   readers:
     - command: napari-pdr-reader.get_reader
