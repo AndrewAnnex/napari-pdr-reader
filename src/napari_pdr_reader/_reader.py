@@ -33,9 +33,8 @@ def napari_get_reader(path):
         # if it is a list, it is assumed to be an image stack...
         # so we are only going to look at the first file.
         path = path[0]
-
     # if we know we cannot read the file, we immediately return None.
-    if not Path(path).suffix.lower() not in valid_formats:
+    if not Path(path).suffix.lower().strip(".") in valid_formats:
         return None
 
     # otherwise we return the *function* that can read ``path``.

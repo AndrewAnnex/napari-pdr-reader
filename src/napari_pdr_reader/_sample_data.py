@@ -18,7 +18,6 @@ def get_m2020_data():
     from pdr.downloaders import download_with_progress_bar
 
     with tempfile.TemporaryDirectory() as tdir:
-        print(tdir)
         url_img = "https://pds-imaging.jpl.nasa.gov/data/mars2020/mars2020_mastcamz_sci_calibrated/data/0061/rad/ZL0_0061_0672355882_040RAD_N0032046ZCAM05036_048050A03.IMG"
         img_path = tdir + "/" + Path(url_img).name
         download_with_progress_bar(url_img, file_path=img_path)
