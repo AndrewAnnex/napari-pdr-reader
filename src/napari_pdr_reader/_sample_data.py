@@ -8,14 +8,17 @@ Replace code below according to your needs.
 """
 from __future__ import annotations
 
-import numpy
+import tempfile
 
 
-def make_sample_data():
+def get_m2020_data():
     """Generates an image"""
-    # Return list of tuples
-    # [(data1, add_image_kwargs1), (data2, add_image_kwargs2)]
-    # Check the documentation for more information about the
-    # add_image_kwargs
-    # https://napari.org/api/napari.Viewer.html#napari.Viewer.add_image
-    return [(numpy.random.rand(512, 512), {})]
+    import pdr
+    from pdr.downloaders import download_data_and_label
+
+    with tempfile.TemporaryDirectory() as dir:
+        url_img = "https://pds-imaging.jpl.nasa.gov/data/mars2020/mars2020_mastcamz_sci_calibrated/data/0061/rad/ZL0_0061_0672355882_040RAD_N0032046ZCAM05036_048050A03.IMG"
+        img_path = download_data_and_label(url_img, data_dir=dir)
+        data = pdr.read(img_path)["IMAGE"]
+
+    return [(data, {"name": "Ingenuity from Mastcam-Z aboard the NASA Perseverance Mars Rover"})]

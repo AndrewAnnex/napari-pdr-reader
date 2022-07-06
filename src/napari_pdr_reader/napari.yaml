@@ -11,8 +11,8 @@ contributions:
   readers:
     - command: napari-pdr-reader.get_reader
       accepts_directories: false
-      filename_patterns: ['*.npy']
+      filename_patterns: ['*.fits', '*.FITS', '*.lbl', '*.img', '*.LBL', '*.IMG']
   sample_data:
-    - command: napari-pdr-reader.make_sample_data
-      display_name: PDS reader plugin for Napari
+    - command: napari-pdr-reader.get_m2020_data
+      display_name: sample m2020 data for napari pdr plugin
       key: unique_id.1
