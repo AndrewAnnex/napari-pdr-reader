@@ -66,7 +66,7 @@ def reader_function(path):
     # handle both a string and a list of strings
     paths = [path] if isinstance(path, str) else path
     # load all files into array
-    objects = [pdr.load(_path) for _path in paths]
+    objects = [pdr.read(_path) for _path in paths]
     arrays = [_["IMAGE"] for _ in objects]
     # stack arrays into single array
     data = np.squeeze(np.stack(arrays))
